@@ -5,6 +5,7 @@ import com.hallakShop.hallakShop.dto.ProductDTO;
 
 import com.hallakShop.hallakShop.entities.Product;
 import com.hallakShop.hallakShop.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,7 +26,7 @@ public class ProductController {
     private ProductService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ProductDTO> findById(@PathVariable Long id){
+    public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
@@ -38,7 +39,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO dto){
+    public ResponseEntity<ProductDTO> saveProduct(@Valid@RequestBody ProductDTO dto){
         dto = service.insert(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
@@ -46,13 +47,13 @@ public class ProductController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO dto, @PathVariable Long id){
+    public ResponseEntity<ProductDTO> updateProduct(@Valid @RequestBody ProductDTO dto, @PathVariable Long id){
         dto = service.update(dto, id);
         return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<ProductDTO> saveProduct(@PathVariable Long id){
+    public ResponseEntity<ProductDTO> deleteProduct(@PathVariable Long id){
         return ResponseEntity.ok(service.delete(id));
     }
 }
