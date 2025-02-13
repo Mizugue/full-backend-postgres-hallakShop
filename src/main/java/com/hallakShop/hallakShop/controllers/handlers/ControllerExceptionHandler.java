@@ -4,7 +4,6 @@ import com.hallakShop.hallakShop.dto.CustomError;
 import com.hallakShop.hallakShop.dto.ValidationError;
 import com.hallakShop.hallakShop.services.exceptions.DatabaseException;
 import com.hallakShop.hallakShop.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

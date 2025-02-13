@@ -1,14 +1,10 @@
 package com.hallakShop.hallakShop.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.Instant;
 
 
-@Getter
-@Setter
+
 public class CustomError {
 
     private Instant timestamp;
@@ -20,6 +16,38 @@ public class CustomError {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
+        this.trace = trace;
+    }
+
+    public Instant getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Instant timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getTrace() {
+        return trace;
+    }
+
+    public void setTrace(String trace) {
         this.trace = trace;
     }
 }

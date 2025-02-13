@@ -5,12 +5,10 @@ import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
+
+import java.util.Objects;
 
 
-@NoArgsConstructor
-
-@EqualsAndHashCode
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem {
@@ -18,12 +16,10 @@ public class OrderItem {
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
 
-    @Getter
-    @Setter
+
     private Integer quantity;
 
-    @Getter
-    @Setter
+
     private Double price;
 
     public OrderItem(Order order, Product product, Integer quantity, Double price){
@@ -32,6 +28,25 @@ public class OrderItem {
         this.quantity = quantity;
         this.price = price;
 
+    }
+
+    public OrderItem() {
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Order getOrder(){
@@ -49,5 +64,19 @@ public class OrderItem {
     public void setOrder(Order order){
         id.setOrder(order);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderItem orderItem = (OrderItem) o;
+        return Objects.equals(id, orderItem.id) && Objects.equals(quantity, orderItem.quantity) && Objects.equals(price, orderItem.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, quantity, price);
+    }
+
 
 }

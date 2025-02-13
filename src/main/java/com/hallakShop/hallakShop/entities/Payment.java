@@ -1,15 +1,11 @@
 package com.hallakShop.hallakShop.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+
 
 import java.time.Instant;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
+
 @Entity
 @Table(name = "tb_payment")
 public class Payment {
@@ -24,4 +20,33 @@ public class Payment {
     @OneToOne
     @MapsId
     private Order order;
+
+    public Payment(Long id, Instant moment, Order order) {
+        this.id = id;
+        this.moment = moment;
+        this.order = order;
+    }
+
+    public Payment() {
+    }
+
+    public Instant getMoment() {
+        return moment;
+    }
+
+    public void setMoment(Instant moment) {
+        this.moment = moment;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }
