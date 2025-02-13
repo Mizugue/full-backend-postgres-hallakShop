@@ -58,6 +58,10 @@ public class ProductDTO {
         this.description = description;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public @Positive(message = "The price must be positive") Double getPrice() {
         return price;
     }

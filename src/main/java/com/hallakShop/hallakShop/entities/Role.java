@@ -1,9 +1,13 @@
 package com.hallakShop.hallakShop.entities;
 
+
+
+
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -13,28 +17,21 @@ public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String authority;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set <User> users = new HashSet<>();
 
-    public Role(Long id, String authority, Set<User> users) {
+
+    public Role(Long id, String authority) {
         this.id = id;
         this.authority = authority;
-        this.users = users;
     }
+
 
     public Role() {
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+
 
     @Override
     public String getAuthority() {
@@ -43,5 +40,22 @@ public class Role implements GrantedAuthority {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) && Objects.equals(authority, role.authority);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(authority);
     }
 }
