@@ -19,7 +19,6 @@ public class User implements UserDetails {
 
     private String name;
 
-
     @Column(unique = true)
     private String email;
 
@@ -40,7 +39,6 @@ public class User implements UserDetails {
     private List<Order> orders = new ArrayList<>();
 
     public User(Long id, String name, String email, String phone, LocalDate birthDate, String password, Set<Role> roles, List<Order> orders) {
-        this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -51,6 +49,10 @@ public class User implements UserDetails {
     }
 
     public User() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

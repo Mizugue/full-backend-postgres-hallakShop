@@ -87,6 +87,7 @@ public class AuthorizationServerConfig {
 		return http.build();
 	}
 
+
 	@Bean
 	public OAuth2AuthorizationService authorizationService() {
 		return new InMemoryOAuth2AuthorizationService();
