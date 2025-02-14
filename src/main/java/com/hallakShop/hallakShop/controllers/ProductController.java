@@ -3,6 +3,7 @@ package com.hallakShop.hallakShop.controllers;
 import com.hallakShop.hallakShop.dto.ProductDTO;
 
 
+import com.hallakShop.hallakShop.dto.ProductMinDTO;
 import com.hallakShop.hallakShop.entities.Product;
 import com.hallakShop.hallakShop.services.ProductService;
 import jakarta.validation.Valid;
@@ -34,10 +35,10 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> findAll(@RequestParam(name = "name", defaultValue = "") String prefix,
-                                                    Pageable pageable){
-        Page<ProductDTO> dto =  service.findAll(pageable, prefix);
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<Page<ProductMinDTO>> findAll(@RequestParam(name = "name", defaultValue = "") String prefix,
+                                                       Pageable pageable){
+
+        return ResponseEntity.ok(service.findAll(pageable, prefix));
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
