@@ -8,24 +8,34 @@ public class OrderItemDTO {
     private String name;
     private Double price;
     private Integer quantity;
+    private String imgUrl;
 
-    public OrderItemDTO(Long productId, String name, Double price, Integer quantity) {
+    public OrderItemDTO(Long productId, String name, Double price, Integer quantity, String imgUrl) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        this.imgUrl = imgUrl;
     }
 
     public OrderItemDTO(OrderItem orderItem) {
         this.productId = orderItem.getProduct().getId();
-        this.name = orderItem.getProduct() != null ? orderItem.getProduct().getName() : "Nome Indisponível";
+        this.name = orderItem.getProduct() != null ? orderItem.getProduct().getName() : "Without name";
         this.price = orderItem.getPrice();
         this.quantity = orderItem.getQuantity();
+        imgUrl = orderItem.getProduct().getImgUrl();
 }
 
     public OrderItemDTO() {
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public Long getProductId() {
         return productId;

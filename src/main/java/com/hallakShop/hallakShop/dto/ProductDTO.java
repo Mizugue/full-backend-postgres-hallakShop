@@ -1,7 +1,7 @@
 package com.hallakShop.hallakShop.dto;
 
 
-import com.hallakShop.hallakShop.entities.Category;
+
 import jakarta.validation.constraints.*;
 
 import java.util.HashSet;
@@ -29,7 +29,7 @@ public class ProductDTO {
 
     private String imgUrl;
 
-    @NotEmpty
+    @NotEmpty(message = "min 1 cat")
     private Set <CategoryDTO> categories = new HashSet<>();
 
     public ProductDTO(Long id, String name, String description, Double price, String imgUrl) {

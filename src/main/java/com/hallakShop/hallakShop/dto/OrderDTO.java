@@ -4,6 +4,7 @@ import com.hallakShop.hallakShop.entities.Order;
 import com.hallakShop.hallakShop.entities.OrderItem;
 import com.hallakShop.hallakShop.entities.OrderStatus;
 import com.hallakShop.hallakShop.entities.Payment;
+import jakarta.validation.constraints.NotEmpty;
 import org.aspectj.weaver.ast.Or;
 import org.modelmapper.ModelMapper;
 
@@ -19,6 +20,8 @@ public class OrderDTO {
     private OrderStatus status;
     private ClientDTO client;
     private PaymentDTO payment;
+
+    @NotEmpty(message = "min 1 item")
     private List<OrderItemDTO> items = new ArrayList<>();
 
     public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client, PaymentDTO payment, List<OrderItemDTO> items) {
