@@ -62,12 +62,7 @@ http://localhost:8080/oauth2/token
 - Spring boot
 - JPA / Hibernate
 - PostgreSQL
-- H2
 
-<a id="aprendizados"></a>
-## Aprendizados
-
-Neste projeto foi possível aprender sobre Bean Validation, usado para fazer validações dos dados de entrada da API, sobre o Spring Security, usado para permitir a autenticação dos usuários, além de gerenciar a autorização para o uso das rotas da API pelo usuário. E, por fim, foi possível aprender mais sobre a criação e utilização de exceções customizadas.
 
 <a id="rodando-localmente"></a>
 ## Rodando localmente
@@ -75,13 +70,13 @@ Neste projeto foi possível aprender sobre Bean Validation, usado para fazer val
 Clone o projeto
 
 ```bash
-  git clone https://github.com/hakkinenT/java-spring-boot-dscommerce.git
+  https://github.com/Mizugue/full-backend-postgres-hallakShop.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd java-spring-boot-dscommerce
+  cd full-backend-postgres-hallakShop
 ```
 
 Rode a aplicação
